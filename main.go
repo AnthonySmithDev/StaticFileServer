@@ -12,9 +12,11 @@ import (
 func main() {
 	app := fiber.New()
 
-	os.Mkdir("./static", os.ModePerm)
+	const path = "./static"
 
-	app.Static("/", "./static")
+	os.Mkdir(path, os.ModePerm)
+
+	app.Static("/", path)
 
 	app.Use(cors.New())
 	app.Use(favicon.New())
